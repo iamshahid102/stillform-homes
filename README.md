@@ -88,6 +88,11 @@ stage padded `.75rem`/`1.25rem` with a 1fr/1fr text-over-image split; apartment 
 | Cursor | lagging dot that expands into a labelled disc over anything marked `data-cursor` |
 | Menu | frosted veil behind the panel, and a dot on the section you are currently in |
 | Hero exit | copy lifts and fades with `--hp`; the photograph drifts a few pixels with the pointer |
+| Fog wipe | `--f` raises a full-viewport fog bank over the about cluster, holds it while the phase changes, then clears it onto the statement |
+| Cluster spread | `--cp` pushes the six about cards outward, tilts them further and shrinks the central frame across the cluster phase |
+| Photo swap | the six tiles cross-fade to a second set of photographs, staggered per card, under cover of the fog |
+| Tile breathe | each cluster photograph slowly pushes in (`tile-breathe`, 24 s, paused off screen) |
+| Cluster hover | a hovered card straightens, lifts and keeps its shadow while its siblings drop to 46% |
 | Marquee | the belt never stands still — it auto-advances and speeds up with the scroll |
 | Scroll velocity | `--skew` on tiles and slide photographs, easing back to flat when you stop |
 | Line staggers | slide headings and apartment copy release line by line on change |
@@ -112,6 +117,26 @@ and for the about card, slides, apartment rooms and the viewer opening. The engi
 hides the underlying `<img>` while it draws and restores it on completion, and it is
 entirely skipped when WebGL is unavailable or motion is reduced — the CSS cross-fades
 still do the job.
+
+### The about cluster
+
+The section is 230 svh tall with a sticky stage, so the same cards stay on screen through
+three beats:
+
+1. **Cluster** — the six photographs sit tilted around the central frame. Scrolling raises
+   `--cp` from 0 to 1, spreading each card outward on its own vector (`--tx`/`--ty`) and
+   adding a few degrees of rotation (`--rr`) while the central card tilts the other way and
+   eases down 4%. On a fine pointer, hovering a card straightens it to 0°, scales it to
+   1.05 and fades its siblings to 46%, with the labelled `VIEW` cursor following.
+2. **Wipe** — `--f` drives a fog gradient plus two billowing smoke banks over the whole
+   viewport (the bank drift only runs while the fog is live). Under the peak of it, the
+   section adds `.is-swapped`, and all six tiles cross-fade to their `.tile__alt`
+   photograph with a 0–180 ms stagger, so the readable content changes with the screen.
+3. **Statement** — the fog clears as `is-reading` hands over to the paragraph, the
+   per-word reveal and the image slot.
+
+Every moving part is a scroll variable painted in the single rAF pass, or a CSS animation
+that is paused unless the section is on screen; reduced motion keeps only the final state.
 
 ### Performance tiers
 
