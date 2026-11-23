@@ -92,7 +92,7 @@ async function sheet({ file, seed, scaleX, scaleY, rise, colour, alpha }) {
 
   const out = path.join(OUT, file);
   await sharp(buf, { raw: { width: W, height: H, channels: 4 } })
-    .resize(1280, 720, { fit: "fill", kernel: "cubic" })
+    .resize(1024, 576, { fit: "fill", kernel: "cubic" })
     .blur(2)
     .png({ compressionLevel: 9, palette: true, colours: 160, effort: 10 })
     .toFile(out);
