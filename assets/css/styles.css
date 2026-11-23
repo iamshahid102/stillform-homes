@@ -293,8 +293,8 @@ section[id], footer[id] { scroll-margin-top: 4.5rem; }
 .about.is-in .w > span { transform: none; }
 
 .about__slot {
-  display: inline-block; height: .82em; width: 1.7em;
-  vertical-align: -.02em; margin-right: .18em;
+  display: inline-block; height: .92em; width: 1.95em;
+  vertical-align: -.06em; margin-right: .18em;
   overflow: hidden; border-radius: .5rem;
   transform: scaleX(.6); opacity: 0;
   transition: transform 1.1s var(--ease) .15s, opacity .8s var(--ease) .15s;

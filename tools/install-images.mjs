@@ -16,13 +16,13 @@ const MANIFEST = [
   ["hero", 13752348, 2400, 1600],
 
   // about gallery tiles + carousel (4:3 / 3:2)
-  ["living-room", 35419466, 1000, 750],
-  ["detail", 15776258, 900, 675],
+  ["living-room", 32631105, 1000, 750],
+  ["detail", 38344729, 900, 675],
   ["kitchen", 36777862, 1000, 750],
   ["side", 10610731, 1000, 750],
   ["top", 13041127, 1000, 750],
   ["residence-hero", 40665038, 1000, 750],
-  ["patio-front", 7031494, 1600, 1067],
+  ["patio-front", 36394726, 1600, 1067],
   ["landscape-house", 13203179, 1600, 1067],
   ["exterior-garden", 27195983, 1600, 1067],
 
@@ -45,7 +45,7 @@ const MANIFEST = [
   ["apartment-bedroom-2", 35229094, 2000, 1125],
 
   // immersive tour, 16:9
-  ["apartment-tour", 31729199, 2200, 1238],
+  ["apartment-tour", 31737861, 2200, 1238],
 ];
 
 const SRC = (id) =>
