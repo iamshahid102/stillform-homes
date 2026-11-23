@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core';
+const b = await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', headless:'new', args:['--no-sandbox','--disable-quic','--disable-http2','--ignore-certificate-errors']});
+const pg = await b.newPage();
+await pg.setViewport({width:1440,height:900,deviceScaleFactor:1});
+const resp = await pg.goto('https://stillform.homes',{waitUntil:'domcontentloaded',timeout:90000}).catch(e=>{console.log('nav',e.message);return null;});
+console.log('status', resp && resp.status(), 'url', pg.url());
+await new Promise(r=>setTimeout(r,5000));
+const info = await pg.evaluate(()=>({title:document.title, ht:document.documentElement.scrollHeight, sections:document.querySelectorAll('section').length, bodyBg:getComputedStyle(document.body).backgroundColor, fonts:[...new Set([...document.fonts].map(f=>f.family))], h1:document.querySelector('h1')?.textContent?.trim().slice(0,80)}));
+console.log(JSON.stringify(info).slice(0,1200));
+await pg.screenshot({path:'.cache/ref/ref-top.png'});
+await b.close();
