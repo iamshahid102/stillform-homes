@@ -13,6 +13,18 @@
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* the ink-dissolve is progressive enhancement: no WebGL, no drama */
+  const Smoke = window.Smoke;
+  const canDissolve = Boolean(Smoke && Smoke.supported && !reduce);
+  const dissolveIn = (host, img, duration = 900) => {
+    if (!canDissolve || !host || !img) return;
+    if (!img.complete || !img.naturalWidth) {
+      img.addEventListener("load", () => Smoke.dissolve(host, img, { duration }), { once: true });
+      return;
+    }
+    Smoke.dissolve(host, img, { duration });
+  };
+
   /* ---------------- loader ---------------- */
   const loader = $("#loader");
   const countEl = $("#loaderCount");
@@ -36,6 +48,8 @@
       requestAnimationFrame(() => { el.style.opacity = "1"; });
     });
     document.body.classList.add("is-ready");
+    const heroImg = $(".hero__media img");
+    if (heroImg) setTimeout(() => dissolveIn($(".hero__media"), heroImg, 1700), 320);
   };
 
   if (loader && countEl && !reduce) {
@@ -106,6 +120,43 @@
     statement.replaceChildren(frag);
   }
 
+  /* ---------------- character reveals ---------------- */
+  $$("[data-chars]").forEach((el) => {
+    let ci = 0;
+    const walk = (node) => {
+      Array.from(node.childNodes).forEach((child) => {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach((token) => {
+            if (!token) return;
+            if (/^\s+$/.test(token)) {
+              frag.appendChild(document.createTextNode(token));
+              return;
+            }
+            // one nowrap wrapper per word, so characters never break a word
+            const word = document.createElement("span");
+            word.className = "cw";
+            Array.from(token).forEach((ch) => {
+              const outer = document.createElement("span");
+              outer.className = "ch";
+              outer.style.setProperty("--d", `${Math.min(ci * 0.018, 0.5)}s`);
+              const inner = document.createElement("span");
+              inner.textContent = ch;
+              outer.appendChild(inner);
+              word.appendChild(outer);
+              ci++;
+            });
+            frag.appendChild(word);
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === 1 && child.tagName !== "BR") {
+          walk(child);
+        }
+      });
+    };
+    walk(el);
+  });
+
   /* ---------------- reveal observer ---------------- */
   const revealTargets = [$(".about"), $(".tone"), $(".foot"), $(".tour")].filter(Boolean)
     .concat($$("[data-reveal]"));
@@ -166,6 +217,12 @@
     if (nameEl) nameEl.textContent = META[idx][0];
     if (descEl) descEl.textContent = META[idx][1];
     if (countEl2) countEl2.textContent = String(idx + 1).padStart(2, "0");
+    [nameEl, countEl2].forEach((el) => {
+      if (!el || reduce) return;
+      el.classList.remove("is-swap");
+      void el.offsetWidth; // restart the animation on every change
+      el.classList.add("is-swap");
+    });
   };
 
   if (viewer && frames.length) {
@@ -206,6 +263,7 @@
     const paintCard = (i) => {
       gi = (i + cardFrames.length) % cardFrames.length;
       cardFrames.forEach((f, k) => f.classList.toggle("is-active", k === gi));
+      dissolveIn($(".card__frames"), cardFrames[gi], 780);
     };
     const prev = $("[data-prev]");
     const next = $("[data-next]");
@@ -225,6 +283,10 @@
   const aptTexts = $$("[data-apt-text]");
   const aptRoll = $("#aptRoll");
   const parallaxEls = $$("[data-parallax]");
+  const cloudLayers = $$("[data-cloud]");
+  let viewerShown = false;
+  let lastSlide = 0;
+  let lastApt = -1;
 
   const progressOf = (el) => {
     if (!el) return 0;
@@ -258,22 +320,39 @@
 
     // about: gallery phase → statement phase
     if (about) {
+      const ap = progressOf(about);
       const threshold = window.innerWidth < 768 ? 0.16 : 0.38;
-      about.classList.toggle("is-reading", progressOf(about) > threshold);
+      about.classList.toggle("is-reading", ap > threshold);
+      if (!reduce) {
+        $$("[data-cloud]", about).forEach((layer) => {
+          layer.style.setProperty("--c", String((ap - 0.5) * 1.5));
+        });
+      }
     }
 
     // stage: marquee → structure
     if (stage) {
       const p = progressOf(stage);
-      stage.classList.toggle("is-viewing", p > 0.46);
+      const viewing = p > 0.46;
+      stage.classList.toggle("is-viewing", viewing);
       if (belt) belt.style.transform = `translate3d(${-p * 42}%, 0, 0)`;
+      if (viewing && !viewerShown) {
+        viewerShown = true;
+        setTimeout(() => dissolveIn(frames[current] && frames[current].parentNode, frames[current], 1300), 260);
+      }
     }
 
     // residence slides
     if (slides && slideEls.length) {
       const p = progressOf(slides);
       const idx = p < 0.5 ? 0 : 1;
+      slides.style.setProperty("--sp", String(p));
       slideEls.forEach((s, i) => s.classList.toggle("is-active", i === idx));
+      if (idx !== lastSlide) {
+        lastSlide = idx;
+        const media = slideEls[idx] && $(".slide__media", slideEls[idx]);
+        if (media) dissolveIn(media, $("img", media), 950);
+      }
     }
 
     // tone heading
@@ -295,6 +374,20 @@
       aptImgs.forEach((im, i) => im.classList.toggle("is-active", i === Math.max(idx, 0)));
       aptTexts.forEach((tx, i) => tx.classList.toggle("is-active", i === idx));
       if (aptRoll) aptRoll.style.transform = `translate3d(0, ${-Math.max(idx, 0) * 1.4}em, 0)`;
+      if (!reduce) {
+        $$("[data-cloud]", apt).forEach((layer) => {
+          layer.style.setProperty("--c", String((p - 0.3) * 1.1));
+        });
+      }
+      if (idx !== lastApt) {
+        const changed = idx > lastApt;
+        lastApt = idx;
+        if (changed && idx > 0) {
+          const host = $(".apt__images");
+          const img = aptImgs[idx] && $("img", aptImgs[idx]);
+          dissolveIn(host, img, 1000);
+        }
+      }
     }
 
     ticking = false;
@@ -311,6 +404,20 @@
   window.addEventListener("resize", requestPaint);
   requestPaint();
   setTimeout(requestPaint, 60);
+
+  /* ---------------- magnetic call-to-action ---------------- */
+  if (!reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    $$(".btn").forEach((btn) => {
+      const move = (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        const y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        btn.style.transform = `translate3d(${clamp(x, -1, 1) * 5}px, ${clamp(y, -1, 1) * 4}px, 0)`;
+      };
+      btn.addEventListener("pointermove", move);
+      btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
+    });
+  }
 
   /* ---------------- clock ---------------- */
   const clock = $("#clock");
