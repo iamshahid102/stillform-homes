@@ -11,6 +11,7 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const smooth = (v) => { const x = clamp(v); return x * x * (3 - 2 * x); };
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* two budgets: `lean` trims GPU work, `lowPower` drops it altogether.
@@ -338,6 +339,7 @@
   const aptRoll = $("#aptRoll");
   const parallaxEls = $$("[data-parallax]");
   const cloudLayers = $$("[data-cloud]");
+  const fog = $("#fog");
   let viewerShown = false;
   let lastSlide = 0;
   let lastApt = -1;
@@ -398,6 +400,18 @@
       const ap = progressOf(about);
       const threshold = window.innerWidth < 768 ? 0.16 : 0.38;
       about.classList.toggle("is-reading", ap > threshold);
+
+      // the fog rises just before the phase change, hides the photo swap,
+      // then clears onto the statement
+      if (fog) {
+        const enter = smooth((ap - threshold * 0.55) / Math.max(threshold * 0.37, 0.02));
+        const exit = smooth((ap - (threshold + 0.02)) / 0.14);
+        fog.style.setProperty("--f", (enter * (1 - exit)).toFixed(3));
+        fog.classList.toggle("is-live", enter > 0.01);
+      }
+      about.classList.toggle("is-swapped", ap > threshold * 0.86);
+      about.style.setProperty("--cp", String(clamp(ap / Math.max(threshold, 0.02))));
+
       if (!reduce) {
         $$("[data-cloud]", about).forEach((layer) => {
           layer.style.setProperty("--c", String((ap - 0.5) * 1.5));
