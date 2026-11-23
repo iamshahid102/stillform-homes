@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Architectural study">
+  
+  <defs>
+    <linearGradient id="sky-residence-hero.svg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CFC6B4"/>
+      <stop offset=".55" stop-color="#E6DECD"/>
+      <stop offset="1" stop-color="#F1EADC"/>
+    </linearGradient>
+    <radialGradient id="sun-residence-hero.svg" cx="0.68" cy=".34" r=".55">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#E3BB7C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-residence-hero.svg" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#C98F4E" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="shade-residence-hero.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".04"/>
+    </linearGradient>
+    <filter id="soft-residence-hero.svg" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="grain-residence-hero.svg">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer>
+    </filter>
+    <clipPath id="clip-residence-hero.svg"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky-residence-hero.svg)"/>
+  <rect width="1600" height="1000" fill="url(#sun-residence-hero.svg)"/>
+  <circle cx="1088" cy="340" r="120" fill="#E3BB7C" opacity="0.18" filter="url(#soft-residence-hero.svg)"/>
+  <rect y="690" width="1600" height="310" fill="#B7AA92"/>
+  
+  <g>
+    <rect x="325.63508266845486" y="467.5355779880358" width="870.6635594697034" height="222.46442201196422" fill="#D7CCB6"/>
+    <rect x="1196.2986421381584" y="457.5355779880358" width="140" height="232.46442201196422" fill="#AEA28B"/>
+    <rect x="155.63508266845486" y="558.1992372210134" width="170" height="131.8007627789866" fill="#C3B7A1"/>
+    <rect x="325.63508266845486" y="441.5355779880358" width="626.8777628181864" height="26" fill="#BFB29B"/>
+    <rect x="155.63508266845486" y="540.1992372210134" width="176" height="18" fill="#BFB29B"/>
+    <rect x="351.75498945254594" y="525.5355779880358" width="89.96856781186935" height="111.23221100598211" fill="#2A2725" opacity="0.85"/><rect x="496.8655826974965" y="525.5355779880358" width="89.96856781186935" height="111.23221100598211" fill="#2A2725" opacity="0.85"/><rect x="641.9761759424471" y="525.5355779880358" width="89.96856781186935" height="111.23221100598211" fill="url(#glass-residence-hero.svg)" opacity="0.9"/><rect x="787.0867691873976" y="525.5355779880358" width="89.96856781186935" height="111.23221100598211" fill="#2A2725" opacity="0.85"/><rect x="932.1973624323482" y="525.5355779880358" width="89.96856781186935" height="111.23221100598211" fill="#2A2725" opacity="0.85"/><rect x="1077.3079556772989" y="525.5355779880358" width="89.96856781186935" height="111.23221100598211" fill="#2A2725" opacity="0.85"/><rect x="351.75498945254594" y="552.1992372210134" width="72.55529662247528" height="52.72030511159465" fill="#2A2725" opacity=".8"/><rect x="496.8655826974965" y="552.1992372210134" width="72.55529662247528" height="52.72030511159465" fill="#2A2725" opacity=".8"/><rect x="932.1973624323482" y="552.1992372210134" width="72.55529662247528" height="52.72030511159465" fill="#2A2725" opacity=".8"/>
+    <rect x="325.63508266845486" y="682" width="1010.6635594697034" height="10" fill="#2A2725" opacity=".22"/>
+    <rect x="365.63508266845486" y="467.5355779880358" width="365.6786949772754" height="222.46442201196422" fill="url(#shade-residence-hero.svg)" opacity=".5"/>
+  </g>
+  <g opacity="0.75" transform="translate(1161.6147584941307 622.0271980771921) scale(1.2152363567916846)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="61.58738441839227" ry="79.65376178438484" fill="#7C8069"/>
+      <ellipse cx="-40" cy="-64" rx="42.525383488519765" ry="62.63467112958183" fill="#7C8069" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="45.94118581243846" ry="54.26325967640768" fill="#7C8069" opacity=".85"/>
+    </g><g opacity="0.75" transform="translate(954.9653885955761 634.4034822724776) scale(0.8639125677821751)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="60.1250497196452" ry="81.54809653086033" fill="#6E7261"/>
+      <ellipse cx="-40" cy="-64" rx="43.28940861825338" ry="62.923838172538126" fill="#6E7261" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="38.46077623519151" ry="55.576741633739665" fill="#6E7261" opacity=".85"/>
+    </g><g opacity="0.75" transform="translate(506.7054550846599 655.0952769420553) scale(1.4574514260550269)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="63.4249607303296" ry="97.7070158541701" fill="#7C8069"/>
+      <ellipse cx="-40" cy="-64" rx="47.12655821029402" ry="52.85279024059548" fill="#7C8069" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="41.91821405474013" ry="55.5550129839941" fill="#7C8069" opacity=".85"/>
+    </g><g opacity="0.75" transform="translate(1157.8972220969838 658.4436207257414) scale(0.8296388240436273)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="79.5417340647158" ry="98.59042834145502" fill="#6E7261"/>
+      <ellipse cx="-40" cy="-64" rx="54.16878420029245" ry="52.054898856233294" fill="#6E7261" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="45.79542496232103" ry="45.09526422670822" fill="#6E7261" opacity=".85"/>
+    </g>
+  <rect y="730" width="1600" height="270" fill="#2A2725" opacity="0.06"/>
+  <rect width="1600" height="1000" fill="none"/>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".78">
+      <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </radialGradient>
+    <rect width="1600" height="1000" fill="url(#vig)"/>
+  <rect width="1600" height="1000" filter="url(#grain-residence-hero.svg)" opacity=".5"/>
+</svg>

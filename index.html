@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STILL / FORM — Architectural Residences</title>
+  <meta name="description" content="Residences shaped by architecture, daylight and honest material. A study in proportion, light and quiet living.">
+  <meta name="theme-color" content="#EDE6D6">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/familjen-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/hero.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.remove("no-js");</script>
+</head>
+<body>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__brand">STILL / FORM</span>
+      <div class="loader__bar"><i id="loaderBar"></i></div>
+      <span class="loader__count" id="loaderCount">00</span>
+    </div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__row">
+      <a class="nav__brand" href="#top">STILL / FORM</a>
+      <div class="nav__right">
+        <button class="nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">
+          <span id="menuLabel">MENU</span>
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </button>
+        <div class="nav__panel" id="menuPanel">
+          <ul>
+            <li><a class="menu-item" href="#residence-slides">Residence</a></li>
+            <li><a class="menu-item" href="#residence-02">Stays</a></li>
+            <li><a class="menu-item" href="#tour">Tour</a></li>
+            <li><a class="menu-item" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top" data-hero>
+      <div class="hero__media" data-parallax="0.16">
+        <img src="assets/img/hero.webp" alt="A low, glazed house lit from within at dusk, lawn and water in the foreground" width="2400" height="1600" fetchpriority="high">
+      </div>
+      <div class="hero__veil"></div>
+
+      <div class="hero__content">
+        <div class="hero__head">
+          <h1 class="hero__title" data-lines>
+            <span class="mask"><span class="line">Built</span></span>
+            <span class="mask"><span class="line">quietly.</span></span>
+          </h1>
+          <div class="hero__actions">
+            <a class="arrow-link" href="#residence-slides"><span>Explore Residence</span><span class="arw">→</span></a>
+            <a class="arrow-link arrow-link--sm" href="#tour"><span>Experience the Space</span><span class="arw">→</span></a>
+          </div>
+        </div>
+
+        <div class="hero__meta">
+          <p>Featured Residence</p>
+          <p>Private Residence</p>
+          <p>2026</p>
+          <p>Explore</p>
+        </div>
+
+        <div class="hero__bottom">
+          <p>A residence is more than its form.<br>It is how light moves through it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / STATEMENT -->
+    <section class="about" id="about" data-about>
+      <div class="about__stage">
+        <p class="about__kicker" data-kicker>A quieter way to live</p>
+
+        <div class="about__tiles" aria-hidden="true">
+          <div class="tile tile--l" data-tile="0"><img src="assets/img/living-room.webp" alt=""></div>
+          <div class="tile tile--l" data-tile="1"><img src="assets/img/detail.webp" alt=""></div>
+          <div class="tile tile--l" data-tile="2"><img src="assets/img/kitchen.webp" alt=""></div>
+          <div class="tile tile--r" data-tile="3"><img src="assets/img/side.webp" alt=""></div>
+          <div class="tile tile--r" data-tile="4"><img src="assets/img/top.webp" alt=""></div>
+          <div class="tile tile--r" data-tile="5"><img src="assets/img/residence-hero.webp" alt=""></div>
+        </div>
+
+        <div class="about__card" data-gallery>
+          <div class="card__frames" id="cardFrames">
+            <img class="is-active" src="assets/img/patio-front.webp" alt="Terrace and pool at the front of the house">
+            <img src="assets/img/landscape-house.webp" alt="House set into the landscape">
+            <img src="assets/img/exterior-garden.webp" alt="Garden elevation at golden hour">
+          </div>
+          <div class="card__arrows">
+            <button type="button" data-prev aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6l-6 6 6 6"/></svg></button>
+            <button type="button" data-next aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <div class="about__text">
+          <div class="about__grid">
+            <div class="about__label"><span>About</span></div>
+            <div class="about__body">
+              <p class="about__statement" data-words><span class="about__slot" data-slot aria-hidden="true"><img src="assets/img/detail.webp" alt=""></span>We shape homes where daylight, proportion and honest material settle into a slower daily rhythm.</p>
+              <div class="about__rule" data-rule></div>
+              <p class="about__support" data-support>STILL / FORM is a residential practice working with stone, timber and glass — building rooms that stay cool at noon and hold the last of the sun.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE + STRUCTURE VIEWER -->
+    <section class="stage" id="structure" data-stage>
+      <div class="stage__inner">
+      <div class="stage__belt" aria-hidden="true">
+        <div class="belt" data-belt>
+          <span>Still / Form</span><span>Still / Form</span><span>Still / Form</span><span>Still / Form</span>
+          <span>Still / Form</span><span>Still / Form</span><span>Still / Form</span><span>Still / Form</span>
+        </div>
+      </div>
+
+      <div class="stage__viewer" id="viewer" data-viewer tabindex="0" role="application" aria-label="Drag to rotate the elevation study">
+        <div class="frames" id="frames">
+          <img class="frame is-active" src="assets/img/frame-1.webp" alt="The house seen from the garden" draggable="false">
+          <img class="frame" src="assets/img/frame-2.webp" alt="Pool against a stone wall" draggable="false">
+          <img class="frame" src="assets/img/frame-3.webp" alt="Glazing reflected in still water" draggable="false">
+          <img class="frame" src="assets/img/frame-4.webp" alt="Pergola and planting along the garden facade" draggable="false">
+          <img class="frame" src="assets/img/frame-5.webp" alt="Facade illuminated after dark" draggable="false">
+          <img class="frame" src="assets/img/frame-6.webp" alt="Living volume in daylight" draggable="false">
+          <img class="frame" src="assets/img/frame-7.webp" alt="Bedroom in low evening light" draggable="false">
+        </div>
+      </div>
+
+      <div class="stage__rail" data-rail>
+        <div class="rail__line"><i data-rail-fill></i></div>
+        <button type="button" class="rail__dot is-active" data-go="0" aria-label="West elevation"></button>
+        <button type="button" class="rail__dot" data-go="1" aria-label="Front elevation"></button>
+        <button type="button" class="rail__dot" data-go="2" aria-label="East elevation"></button>
+        <button type="button" class="rail__dot" data-go="3" aria-label="North elevation"></button>
+        <button type="button" class="rail__dot" data-go="4" aria-label="Courtyard"></button>
+        <button type="button" class="rail__dot" data-go="5" aria-label="Roof study"></button>
+        <button type="button" class="rail__dot" data-go="6" aria-label="Rear terrace"></button>
+        <span class="rail__hint"><span class="rail__ring"></span><span class="rail__hint-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 5 4 12l5 7M15 5l5 7-5 7"/></svg></span></span>
+      </div>
+
+      <div class="stage__drag" data-drag-hint>
+        <span class="drag__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12a8 8 0 1 1 3 6.2"/><path d="M4 18v-5h5"/></svg></span>
+        <span>Drag to rotate</span>
+      </div>
+
+      <div class="stage__bar">
+        <div class="stage__bar-l">
+          <div class="eyebrow"><i></i><span>Structure</span></div>
+          <div class="mask"><h3 class="stage__title" id="frameName">Full View</h3></div>
+          <p class="stage__sub" id="frameDesc">Complete building overview</p>
+        </div>
+        <div class="stage__bar-r">
+          <div class="mask"><div class="stage__count" id="frameCount">01</div></div>
+          <div class="stage__of">of 07</div>
+        </div>
+      </div>
+
+      <div class="stage__progress">
+        <div class="prog">
+          <i class="prog__fill" id="progFill"></i>
+          <span class="tick" style="left:0"></span>
+          <span class="tick" style="left:16.666%"></span>
+          <span class="tick" style="left:33.333%"></span>
+          <span class="tick" style="left:50%"></span>
+          <span class="tick" style="left:66.666%"></span>
+          <span class="tick" style="left:83.333%"></span>
+          <span class="prog__thumb" id="progThumb"></span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- RESIDENCE 01 SLIDES -->
+    <section class="slides" id="residence-slides" data-slides>
+      <div class="slides__stage">
+        <article class="slide is-active" data-slide>
+          <div class="slide__text">
+            <h2>
+              <span class="mask"><span class="line">A study in</span></span>
+              <span class="mask"><span class="line">mass, light</span></span>
+              <span class="mask"><span class="line">and silence.</span></span>
+            </h2>
+            <div class="slide__foot">
+              <div class="pill-row"><span class="pill is-on">01</span><span class="pill">02</span></div>
+              <p>Three volumes set around a shaded court, so the plan stays cool through the afternoon and gives back warmth at dusk.</p>
+            </div>
+          </div>
+          <div class="slide__media"><img src="assets/img/slide-1.webp" alt="Residence 01, garden elevation" loading="lazy"></div>
+        </article>
+
+        <article class="slide" data-slide>
+          <div class="slide__text">
+            <h2>
+              <span class="mask"><span class="line">Rooms that</span></span>
+              <span class="mask"><span class="line">keep the</span></span>
+              <span class="mask"><span class="line">evening light.</span></span>
+            </h2>
+            <div class="slide__foot">
+              <div class="pill-row"><span class="pill is-on">02</span><span class="pill">02</span></div>
+              <p>Deep reveals and unpolished surfaces hold the last of the sun, letting every room finish the day gradually.</p>
+            </div>
+          </div>
+          <div class="slide__media"><img src="assets/img/slide-2.webp" alt="Residence 01, side elevation" loading="lazy"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TONE TRANSITION -->
+    <section class="tone" data-tone>
+      <div class="tone__sticky">
+        <p class="tone__label">Residence 02</p>
+        <h2 class="tone__heading">Not every room<br>needs to speak loudly.</h2>
+      </div>
+    </section>
+
+    <!-- RESIDENCE 02 / APARTMENT -->
+    <section class="apt" id="residence-02" data-apt>
+      <div class="apt__stage">
+        <div class="apt__images" aria-hidden="true">
+          <div class="apt__img is-active" data-apt-img><img src="assets/img/apartment-living.webp" alt=""></div>
+          <div class="apt__img" data-apt-img><img src="assets/img/apartment-bedroom.webp" alt=""></div>
+          <div class="apt__img" data-apt-img><img src="assets/img/apartment-bedroom-2.webp" alt=""></div>
+        </div>
+
+        <div class="apt__hero">
+          <p class="eyebrow">Residence 02</p>
+          <h2>
+            <span class="mask"><span class="line">A slower</span></span>
+            <span class="mask"><span class="line">way to stay.</span></span>
+          </h2>
+        </div>
+
+        <div class="apt__panel">
+          <div class="apt__text is-active" data-apt-text>
+            <p class="apt__label">The living area</p>
+            <h3><span class="mask"><span class="line">Everything</span></span><span class="mask"><span class="line">within reach.</span></span></h3>
+            <p class="apt__copy">An open ground floor for cooking, eating and sitting, with one long window that keeps the garden in the room.</p>
+            <p class="apt__spec">Two bedrooms · Living area · Kitchen · Bathroom</p>
+          </div>
+          <div class="apt__text" data-apt-text>
+            <p class="apt__label">The bedroom</p>
+            <h3><span class="mask"><span class="line">Mornings,</span></span><span class="mask"><span class="line">softly lit.</span></span></h3>
+            <p class="apt__copy">Linen, clay plaster and a window into the trees. A room that asks nothing of you except rest.</p>
+            <p class="apt__spec">Garden view · Natural textiles</p>
+          </div>
+          <div class="apt__text" data-apt-text>
+            <p class="apt__label">The second room</p>
+            <h3><span class="mask"><span class="line">Room for</span></span><span class="mask"><span class="line">one more.</span></span></h3>
+            <p class="apt__copy">A second bedroom held to the same standard, with filtered light, woven texture and a corner for reading.</p>
+            <p class="apt__spec">Filtered light · Woven textures</p>
+          </div>
+        </div>
+
+        <div class="apt__label">
+          <span>Inside the apartment</span>
+          <span class="roll"><span class="roll__col" id="aptRoll"><i>01</i><i>02</i><i>03</i></span><span class="roll__of">/ 03</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOUR -->
+    <section class="tour" id="tour">
+      <div class="tour__stage">
+        <div class="tour__box">
+          <img class="tour__bg" src="assets/img/apartment-tour.webp" alt="Interior of Residence 02" loading="lazy">
+          <div class="tour__inner">
+            <div class="tour__top">
+              <p>Explore Residence 02</p>
+              <ul class="keys">
+                <li><span class="key-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span><span>Move</span></li>
+                <li><span class="key-row"><kbd>E</kbd></span><span>Interact</span></li>
+                <li><span class="key-row"><kbd>Q</kbd></span><span>Customize</span></li>
+              </ul>
+            </div>
+            <div class="tour__bottom">
+              <h2><span class="mask"><span class="line">Step inside.</span></span></h2>
+              <div class="tour__cta">
+                <p>Move past the photograph and walk the apartment from within — every room, every window, every material at its own pace.</p>
+                <a class="btn" href="#contact">Enter Residence 02 <span>→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot" id="contact">
+      <div class="foot__frame">
+        <div class="foot__top">
+          <a href="#top">Still / Form</a>
+          <span>Space, held in light.</span>
+        </div>
+        <div class="foot__rule"></div>
+        <div class="foot__body">
+          <div>
+            <h2>Space, held<br>in light.</h2>
+            <p>Houses shaped by proportion, daylight and honest material.</p>
+          </div>
+          <div class="foot__cols">
+            <div>
+              <p class="foot__col-title">Explore</p>
+              <a href="#residence-slides">Residence 01</a>
+              <a href="#residence-02">Residence 02</a>
+            </div>
+            <div>
+              <p class="foot__col-title">Follow</p>
+              <a href="#contact">Instagram</a>
+              <a href="#contact">Journal</a>
+            </div>
+          </div>
+        </div>
+        <div class="foot__base">
+          <span>© <span id="year">2026</span> Still / Form</span>
+          <span>Local time <span id="clock">--:--</span></span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

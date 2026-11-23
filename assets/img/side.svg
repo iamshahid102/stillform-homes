@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Architectural study">
+  
+  <defs>
+    <linearGradient id="sky-side.svg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CFC6B4"/>
+      <stop offset=".55" stop-color="#E6DECD"/>
+      <stop offset="1" stop-color="#F1EADC"/>
+    </linearGradient>
+    <radialGradient id="sun-side.svg" cx="0.68" cy=".34" r=".55">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#E3BB7C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-side.svg" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#C98F4E" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="shade-side.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".04"/>
+    </linearGradient>
+    <filter id="soft-side.svg" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="grain-side.svg">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer>
+    </filter>
+    <clipPath id="clip-side.svg"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky-side.svg)"/>
+  <rect width="1600" height="1000" fill="url(#sun-side.svg)"/>
+  <circle cx="1088" cy="340" r="120" fill="#E3BB7C" opacity="0.18" filter="url(#soft-side.svg)"/>
+  <rect y="690" width="1600" height="310" fill="#B7AA92"/>
+  
+  <g>
+    <rect x="291.04775796227517" y="472.68945901314237" width="860.3699601350212" height="217.31054098685763" fill="#D7CCB6"/>
+    <rect x="1151.4177180972963" y="462.68945901314237" width="140" height="227.31054098685763" fill="#AEA28B"/>
+    <rect x="121.04775796227517" y="515.0220272946274" width="170" height="174.9779727053726" fill="#C3B7A1"/>
+    <rect x="291.04775796227517" y="446.68945901314237" width="619.4663712972152" height="26" fill="#BFB29B"/>
+    <rect x="121.04775796227517" y="497.0220272946274" width="176" height="18" fill="#BFB29B"/>
+    <rect x="460.2538501221627" y="530.6894590131424" width="88.90489588061887" height="108.65527049342882" fill="#2A2725" opacity="0.85"/><rect x="603.6488434779995" y="530.6894590131424" width="88.90489588061887" height="108.65527049342882" fill="url(#glass-side.svg)" opacity="0.9"/><rect x="747.0438368338365" y="530.6894590131424" width="88.90489588061887" height="108.65527049342882" fill="url(#glass-side.svg)" opacity="0.9"/><rect x="890.4388301896732" y="530.6894590131424" width="88.90489588061887" height="108.65527049342882" fill="#2A2725" opacity="0.85"/><rect x="460.2538501221627" y="509.0220272946274" width="71.69749667791844" height="69.99118908214903" fill="#2A2725" opacity=".8"/><rect x="747.0438368338365" y="509.0220272946274" width="71.69749667791844" height="69.99118908214903" fill="#2A2725" opacity=".8"/><rect x="890.4388301896732" y="509.0220272946274" width="71.69749667791844" height="69.99118908214903" fill="#2A2725" opacity=".8"/>
+    <rect x="291.04775796227517" y="682" width="1000.3699601350212" height="10" fill="#2A2725" opacity=".22"/>
+    <rect x="331.04775796227517" y="472.68945901314237" width="361.3553832567089" height="217.31054098685763" fill="url(#shade-side.svg)" opacity=".5"/>
+  </g>
+  <g opacity="0.75" transform="translate(594.5781900429065 644.0051627084637) scale(0.8027952443588503)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="60.28916844180281" ry="72.51906261151613" fill="#7C8069"/>
+      <ellipse cx="-40" cy="-64" rx="43.02470426402274" ry="52.18696972177688" fill="#7C8069" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="48.27867547156227" ry="46.221357465824745" fill="#7C8069" opacity=".85"/>
+    </g><g opacity="0.75" transform="translate(1077.0937453941879 640.4881117029526) scale(1.0630997024537527)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="67.69907308076465" ry="74.25770952750823" fill="#6E7261"/>
+      <ellipse cx="-40" cy="-64" rx="51.67818791963076" ry="52.53520205828138" fill="#6E7261" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="46.35220967808375" ry="57.15813803540456" fill="#6E7261" opacity=".85"/>
+    </g>
+  <rect y="730" width="1600" height="270" fill="#2A2725" opacity="0.06"/>
+  <rect width="1600" height="1000" fill="none"/>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".78">
+      <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </radialGradient>
+    <rect width="1600" height="1000" fill="url(#vig)"/>
+  <rect width="1600" height="1000" filter="url(#grain-side.svg)" opacity=".5"/>
+</svg>

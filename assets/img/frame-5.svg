@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Elevation 5">
+  
+  <defs>
+    <linearGradient id="sky-frame4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CFC6B4"/>
+      <stop offset=".55" stop-color="#E6DECD"/>
+      <stop offset="1" stop-color="#F1EADC"/>
+    </linearGradient>
+    <radialGradient id="sun-frame4" cx="0.66" cy=".34" r=".55">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#E3BB7C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-frame4" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#C98F4E" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="shade-frame4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".04"/>
+    </linearGradient>
+    <filter id="soft-frame4" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="grain-frame4">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer>
+    </filter>
+    <clipPath id="clip-frame4"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky-frame4)"/>
+  <rect width="1600" height="1000" fill="url(#sun-frame4)"/>
+  <rect y="720" width="1600" height="280" fill="#C4B8A2"/>
+  <rect y="720" width="1600" height="280" fill="#2A2725" opacity=".08"/>
+  <rect x="280" y="726" width="1040" height="120" fill="#2A2725" opacity=".08" filter="url(#soft-frame4)"/>
+  <!-- side mass -->
+  <rect x="875.1666049839541" y="460" width="209.99999999999994" height="260" fill="#B3A48C"/>
+  <rect x="875.1666049839541" y="460" width="209.99999999999994" height="260" fill="#2A2725" opacity=".18"/>
+  <!-- front mass -->
+  <rect x="304.8333950160459" y="420" width="570.3332099679081" height="300" fill="#DDD2BC"/>
+  <rect x="304.8333950160459" y="420" width="570.3332099679081" height="18" fill="#F4EEE1"/>
+  <rect x="618.5166604983954" y="420" width="256.64994448555865" height="300" fill="url(#shade-frame4)" opacity=".45"/>
+  <rect x="333.35005551444135" y="462" width="78.42081637058737" height="156" fill="#2A2725" opacity=".82"/><rect x="475.93335800641836" y="462" width="78.42081637058737" height="156" fill="#2A2725" opacity=".82"/><rect x="618.5166604983954" y="462" width="78.42081637058737" height="156" fill="#2A2725" opacity=".82"/><rect x="761.0999629903724" y="462" width="78.42081637058737" height="156" fill="#2A2725" opacity=".82"/>
+  <!-- lower wing -->
+  <rect x="244.83339501604593" y="530" width="353.60659018010307" height="190" fill="#F4EEE1"/>
+  <rect x="268.4071676947195" y="572" width="64.82787486635223" height="98.8" fill="#2A2725" opacity=".82"/><rect x="386.27603108808717" y="572" width="64.82787486635223" height="98.8" fill="#2A2725" opacity=".82"/><rect x="504.14489448145486" y="572" width="64.82787486635223" height="98.8" fill="#2A2725" opacity=".82"/>
+  <rect x="244.83339501604593" y="530" width="353.60659018010307" height="12" fill="#C4B8A2"/>
+  <rect width="1600" height="1000" fill="none"/>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".78">
+      <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </radialGradient>
+    <rect width="1600" height="1000" fill="url(#vig)"/>
+  <rect width="1600" height="1000" filter="url(#grain-frame4)" opacity=".5"/>
+</svg>

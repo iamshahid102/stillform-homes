@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Architectural study">
+  
+  <defs>
+    <linearGradient id="sky-patio-front.svg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CFC6B4"/>
+      <stop offset=".55" stop-color="#E6DECD"/>
+      <stop offset="1" stop-color="#F1EADC"/>
+    </linearGradient>
+    <radialGradient id="sun-patio-front.svg" cx="0.68" cy=".34" r=".55">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#E3BB7C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-patio-front.svg" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#C98F4E" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="shade-patio-front.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".04"/>
+    </linearGradient>
+    <filter id="soft-patio-front.svg" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="grain-patio-front.svg">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer>
+    </filter>
+    <clipPath id="clip-patio-front.svg"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky-patio-front.svg)"/>
+  <rect width="1600" height="1000" fill="url(#sun-patio-front.svg)"/>
+  <circle cx="1088" cy="340" r="120" fill="#E3BB7C" opacity="0.18" filter="url(#soft-patio-front.svg)"/>
+  <rect y="690" width="1600" height="310" fill="#B7AA92"/>
+  <rect x="306.46583459641124" y="730" width="1079.9872406292648" height="120" fill="#9DA79E" opacity=".55"/>
+  <g>
+    <rect x="346.46583459641124" y="489.8248272528056" width="959.9872406292648" height="200.17517274719438" fill="#D7CCB6"/>
+    <rect x="1306.453075225676" y="479.8248272528056" width="140" height="210.17517274719438" fill="#AEA28B"/>
+    <rect x="176.46583459641124" y="563.2757068766633" width="170" height="126.72429312333665" fill="#C3B7A1"/>
+    <rect x="346.46583459641124" y="463.8248272528056" width="691.1908132530706" height="26" fill="#BFB29B"/>
+    <rect x="176.46583459641124" y="545.2757068766633" width="176" height="18" fill="#BFB29B"/>
+    <rect x="375.26545181528917" y="547.8248272528056" width="99.1986815316907" height="100.08758637359719" fill="#2A2725" opacity="0.85"/><rect x="535.2633252535" y="547.8248272528056" width="99.1986815316907" height="100.08758637359719" fill="#2A2725" opacity="0.85"/><rect x="695.2611986917109" y="547.8248272528056" width="99.1986815316907" height="100.08758637359719" fill="#2A2725" opacity="0.85"/><rect x="855.2590721299216" y="547.8248272528056" width="99.1986815316907" height="100.08758637359719" fill="#2A2725" opacity="0.85"/><rect x="1015.2569455681324" y="547.8248272528056" width="99.1986815316907" height="100.08758637359719" fill="#2A2725" opacity="0.85"/><rect x="1175.2548190063433" y="547.8248272528056" width="99.1986815316907" height="100.08758637359719" fill="#2A2725" opacity="0.85"/><rect x="375.26545181528917" y="557.2757068766633" width="79.9989367191054" height="50.68971724933466" fill="#2A2725" opacity=".8"/><rect x="535.2633252535" y="557.2757068766633" width="79.9989367191054" height="50.68971724933466" fill="#2A2725" opacity=".8"/><rect x="695.2611986917109" y="557.2757068766633" width="79.9989367191054" height="50.68971724933466" fill="#2A2725" opacity=".8"/><rect x="1015.2569455681324" y="557.2757068766633" width="79.9989367191054" height="50.68971724933466" fill="#2A2725" opacity=".8"/>
+    <rect x="346.46583459641124" y="682" width="1099.9872406292648" height="10" fill="#2A2725" opacity=".22"/>
+    <rect x="386.46583459641124" y="489.8248272528056" width="403.1946410642912" height="200.17517274719438" fill="url(#shade-patio-front.svg)" opacity=".5"/>
+  </g>
+  <g opacity="0.75" transform="translate(1108.3039336131437 645.2279605461415) scale(1.125120737112649)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="79.75625586870883" ry="76.87735205091413" fill="#7C8069"/>
+      <ellipse cx="-40" cy="-64" rx="53.15245316045007" ry="48.32482159618513" fill="#7C8069" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="45.36032068513349" ry="57.75976237550367" fill="#7C8069" opacity=".85"/>
+    </g><g opacity="0.75" transform="translate(560.9285493013117 625.4245664763379) scale(1.341911465624306)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="65.46365102541803" ry="97.26767071581803" fill="#6E7261"/>
+      <ellipse cx="-40" cy="-64" rx="48.39099906775681" ry="48.15549965023785" fill="#6E7261" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="44.318368490933615" ry="48.53191526445184" fill="#6E7261" opacity=".85"/>
+    </g><g opacity="0.75" transform="translate(797.4578948586517 656.9851309047011) scale(0.8917872313604631)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#8A7F6B"/>
+      <ellipse cx="0" cy="-96" rx="61.219522248590145" ry="80.72130195550682" fill="#7C8069"/>
+      <ellipse cx="-40" cy="-64" rx="53.848903610300695" ry="50.97944442787182" fill="#7C8069" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="44.81487162262894" ry="47.0492524816884" fill="#7C8069" opacity=".85"/>
+    </g>
+  <rect y="730" width="1600" height="270" fill="#2A2725" opacity="0.06"/>
+  <rect width="1600" height="1000" fill="none"/>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".78">
+      <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </radialGradient>
+    <rect width="1600" height="1000" fill="url(#vig)"/>
+  <rect width="1600" height="1000" filter="url(#grain-patio-front.svg)" opacity=".5"/>
+</svg>

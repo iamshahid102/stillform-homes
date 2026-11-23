@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Architectural study">
+  
+  <defs>
+    <linearGradient id="sky-night-side.svg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5E5A52"/>
+      <stop offset=".55" stop-color="#8C8579"/>
+      <stop offset="1" stop-color="#C4B49D"/>
+    </linearGradient>
+    <radialGradient id="sun-night-side.svg" cx="0.7" cy=".34" r=".55">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#E3BB7C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-night-side.svg" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#C98F4E" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="shade-night-side.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".04"/>
+    </linearGradient>
+    <filter id="soft-night-side.svg" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="grain-night-side.svg">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer>
+    </filter>
+    <clipPath id="clip-night-side.svg"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky-night-side.svg)"/>
+  <rect width="1600" height="1000" fill="url(#sun-night-side.svg)"/>
+  <circle cx="1120" cy="340" r="120" fill="#E3BB7C" opacity="0.28" filter="url(#soft-night-side.svg)"/>
+  <rect y="690" width="1600" height="310" fill="#2A2725"/>
+  
+  <g>
+    <rect x="298.58092063040516" y="457.51694312203534" width="932.5094589556146" height="232.48305687796466" fill="#39352F"/>
+    <rect x="1231.0903795860197" y="447.51694312203534" width="140" height="242.48305687796466" fill="#242220"/>
+    <rect x="128.58092063040516" y="547.0883510620745" width="170" height="142.91164893792552" fill="#2E2B26"/>
+    <rect x="298.58092063040516" y="431.51694312203534" width="671.4068104480425" height="26" fill="#1F1D1A"/>
+    <rect x="128.58092063040516" y="529.0883510620745" width="176" height="18" fill="#1F1D1A"/>
+    <rect x="326.5562043990736" y="515.5169431220354" width="96.35931075874684" height="116.24152843898233" fill="url(#glass-night-side.svg)" opacity="0.9"/><rect x="637.3926907176118" y="515.5169431220354" width="96.35931075874684" height="116.24152843898233" fill="url(#glass-night-side.svg)" opacity="0.9"/><rect x="792.810933876881" y="515.5169431220354" width="96.35931075874684" height="116.24152843898233" fill="url(#glass-night-side.svg)" opacity="0.9"/><rect x="948.22917703615" y="515.5169431220354" width="96.35931075874684" height="116.24152843898233" fill="#2A2725" opacity="0.85"/><rect x="326.5562043990736" y="541.0883510620745" width="77.70912157963456" height="57.16465957517021" fill="#2A2725" opacity=".8"/><rect x="481.9744475583427" y="541.0883510620745" width="77.70912157963456" height="57.16465957517021" fill="#2A2725" opacity=".8"/><rect x="948.22917703615" y="541.0883510620745" width="77.70912157963456" height="57.16465957517021" fill="#2A2725" opacity=".8"/>
+    <rect x="298.58092063040516" y="682" width="1072.5094589556147" height="10" fill="#2A2725" opacity=".22"/>
+    <rect x="338.58092063040516" y="457.51694312203534" width="391.65397276135815" height="232.48305687796466" fill="url(#shade-night-side.svg)" opacity=".5"/>
+  </g>
+  <g opacity="0.9" transform="translate(790.8703790841951 648.929622652442) scale(1.0591612393544807)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#211F1B"/>
+      <ellipse cx="0" cy="-96" rx="61.529785426114586" ry="81.54496612751157" fill="#4E5346"/>
+      <ellipse cx="-40" cy="-64" rx="42.698635259037204" ry="57.050412607868395" fill="#4E5346" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="39.918773434087065" ry="56.69992779041637" fill="#4E5346" opacity=".85"/>
+    </g><g opacity="0.9" transform="translate(1357.061370963725 625.2208824666315) scale(1.162605197780116)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#211F1B"/>
+      <ellipse cx="0" cy="-96" rx="65.67005904841704" ry="73.63883785327842" fill="#4E5346"/>
+      <ellipse cx="-40" cy="-64" rx="55.115741654818756" ry="50.46109722576155" fill="#4E5346" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="43.929921461236624" ry="59.13012040365959" fill="#4E5346" opacity=".85"/>
+    </g><g opacity="0.9" transform="translate(976.3329609838933 655.9353519584682) scale(0.7540762875248103)">
+      <rect x="-4" y="-70" width="8" height="80" fill="#211F1B"/>
+      <ellipse cx="0" cy="-96" rx="59.92039206992853" ry="82.66800867704116" fill="#4E5346"/>
+      <ellipse cx="-40" cy="-64" rx="42.90498637543292" ry="48.921994587835854" fill="#4E5346" opacity=".85"/>
+      <ellipse cx="40" cy="-58" rx="51.689471774589954" ry="49.13374997914478" fill="#4E5346" opacity=".85"/>
+    </g>
+  <rect y="730" width="1600" height="270" fill="#2A2725" opacity="0.18"/>
+  <rect width="1600" height="1000" fill="none"/>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".78">
+      <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </radialGradient>
+    <rect width="1600" height="1000" fill="url(#vig)"/>
+  <rect width="1600" height="1000" filter="url(#grain-night-side.svg)" opacity=".5"/>
+</svg>

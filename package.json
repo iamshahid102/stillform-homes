@@ -1,0 +1,15 @@
+{
+  "name": "stillform-homes",
+  "version": "1.0.0",
+  "description": "A rebuilt replica of the **design system and page structure** of `stillform.homes`: same fonts, same palette, same grid, same section sequence, same motion behaviour. Plain HTML/CSS/JS — no install, no build step.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "puppeteer-core": "^25.18.1",
+    "sharp": "^0.35.5"
+  }
+}

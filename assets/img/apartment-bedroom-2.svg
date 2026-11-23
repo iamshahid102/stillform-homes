@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Interior architectural study">
+  
+  <defs>
+    <linearGradient id="sky-apartment-bedroom-2.svg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C4B49D"/>
+      <stop offset=".55" stop-color="#8C8579"/>
+      <stop offset="1" stop-color="#5E5A52"/>
+    </linearGradient>
+    <radialGradient id="sun-apartment-bedroom-2.svg" cx="0.5" cy=".34" r=".55">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#E3BB7C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-apartment-bedroom-2.svg" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0" stop-color="#E3BB7C" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#C98F4E" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="shade-apartment-bedroom-2.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".04"/>
+    </linearGradient>
+    <filter id="soft-apartment-bedroom-2.svg" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="grain-apartment-bedroom-2.svg">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer>
+    </filter>
+    <clipPath id="clip-apartment-bedroom-2.svg"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="#3A342C"/>
+  <rect y="620" width="1600" height="380" fill="#332C24"/>
+  <rect y="606" width="1600" height="14" fill="#2A2725" opacity=".12"/>
+  <!-- window -->
+  <rect x="437.9815259659577" y="150" width="739.3598541148751" height="430" fill="url(#sky-apartment-bedroom-2.svg)"/>
+  <rect x="437.9815259659577" y="150" width="739.3598541148751" height="430" fill="url(#sun-apartment-bedroom-2.svg)" opacity=".9"/>
+  <rect x="411.9815259659577" y="124" width="791.3598541148751" height="482" fill="none" stroke="#4B4438" stroke-width="26"/>
+  <rect x="543.6043622680827" y="150" width="7" height="430" fill="#2A2725" opacity=".5"/><rect x="649.2271985702077" y="150" width="7" height="430" fill="#2A2725" opacity=".5"/><rect x="754.8500348723328" y="150" width="7" height="430" fill="#2A2725" opacity=".5"/><rect x="860.4728711744579" y="150" width="7" height="430" fill="#2A2725" opacity=".5"/><rect x="966.0957074765829" y="150" width="7" height="430" fill="#2A2725" opacity=".5"/><rect x="1071.7185437787077" y="150" width="7" height="430" fill="#2A2725" opacity=".5"/>
+  <g transform="translate(397.9815259659577 630) skewX(-18)">
+    <rect x="0" y="0" width="52.81141815106251" height="140" fill="#E3BB7C" opacity="0.1" filter="url(#soft-apartment-bedroom-2.svg)"/><rect x="105.62283630212502" y="0" width="52.81141815106251" height="140" fill="#E3BB7C" opacity="0.1" filter="url(#soft-apartment-bedroom-2.svg)"/><rect x="211.24567260425005" y="0" width="52.81141815106251" height="140" fill="#E3BB7C" opacity="0.1" filter="url(#soft-apartment-bedroom-2.svg)"/><rect x="316.86850890637504" y="0" width="52.81141815106251" height="140" fill="#E3BB7C" opacity="0.1" filter="url(#soft-apartment-bedroom-2.svg)"/><rect x="422.4913452085001" y="0" width="52.81141815106251" height="140" fill="#E3BB7C" opacity="0.1" filter="url(#soft-apartment-bedroom-2.svg)"/><rect x="528.1141815106251" y="0" width="52.81141815106251" height="140" fill="#E3BB7C" opacity="0.1" filter="url(#soft-apartment-bedroom-2.svg)"/><rect x="633.7370178127501" y="0" width="52.81141815106251" height="140" fill="#E3BB7C" opacity="0.1" filter="url(#soft-apartment-bedroom-2.svg)"/>
+  </g>
+  <rect x="437.9815259659577" y="626" width="739.3598541148751" height="150" fill="#E3BB7C" opacity="0.12" filter="url(#soft-apartment-bedroom-2.svg)"/>
+  <g opacity=".95">
+      <rect x="971.3819169199545" y="465.36089741408864" width="326.22481420926044" height="154.63910258591133" fill="#463E33"/>
+      <rect x="971.3819169199545" y="465.36089741408864" width="326.22481420926044" height="27.835038465464038" fill="#54493B"/>
+      <rect x="981.3819169199545" y="604.5360897414089" width="306.22481420926044" height="10" fill="#2A2725" opacity=".18"/>
+    </g><g opacity=".95">
+      <rect x="836.33823328853" y="444.9247290403232" width="256.1390474979482" height="175.07527095967683" fill="#463E33"/>
+      <rect x="836.33823328853" y="444.9247290403232" width="256.1390474979482" height="31.513548772741828" fill="#54493B"/>
+      <rect x="846.33823328853" y="602.4924729040323" width="236.13904749794818" height="10" fill="#2A2725" opacity=".18"/>
+    </g><g opacity=".95">
+      <rect x="498.13009519282025" y="527.6090228080791" width="383.76138560649076" height="92.39097719192085" fill="#463E33"/>
+      <rect x="498.13009519282025" y="527.6090228080791" width="383.76138560649076" height="16.630375894545754" fill="#54493B"/>
+      <rect x="508.13009519282025" y="610.760902280808" width="363.76138560649076" height="10" fill="#2A2725" opacity=".18"/>
+    </g>
+  <rect x="0" y="0" width="1600" height="1000" fill="#2B2620" opacity=".18" filter="url(#soft-apartment-bedroom-2.svg)"/>
+  <rect width="1600" height="1000" fill="none"/>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".78">
+      <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </radialGradient>
+    <rect width="1600" height="1000" fill="url(#vig)"/>
+  <rect width="1600" height="1000" filter="url(#grain-apartment-bedroom-2.svg)" opacity=".5"/>
+</svg>
