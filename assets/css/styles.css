@@ -759,7 +759,12 @@ kbd {
   transform: translate3d(calc(var(--c, 0) * 4.5vw), calc(var(--c, 0) * -2.5vh), 0);
   transition: opacity 1.8s var(--ease) .25s;
 }
-.smoke__layer img { width: 100%; height: auto; animation: smoke-drift 34s ease-in-out infinite alternate; }
+.smoke__layer img {
+  width: 100%; height: auto;
+  animation: smoke-drift 34s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+.smoke.is-live .smoke__layer img { animation-play-state: running; }
 .smoke__layer--a { top: 2%; }
 .smoke__layer--b { top: 48%; left: -2%; width: 104%; }
 .smoke__layer--b img { animation-duration: 44s; animation-direction: alternate-reverse; }
@@ -917,6 +922,12 @@ body.is-ready .hero__media img { transform: none; }
 @media (hover: none), (pointer: coarse) {
   .cursor { display: none; }
 }
+
+/* low-memory phones: one static sheet instead of two drifting ones */
+.is-lowpower .smoke__layer--b { display: none; }
+.is-lowpower .smoke__layer { will-change: auto; }
+.is-lowpower .smoke__layer img { animation: none; }
+.is-lowpower .about.is-in .smoke__layer { opacity: .4; }
 
 @media (max-width: 1023px) {
   /* the panel copy sits over the brightest part of these photographs */

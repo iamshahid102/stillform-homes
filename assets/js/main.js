@@ -13,9 +13,18 @@
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* two budgets: `lean` trims GPU work, `lowPower` drops it altogether.
+     deviceMemory is Chromium-only; elsewhere it reads as 4, so phones keep
+     the dissolve and simply render it at a smaller resolution. */
+  const coarse = window.matchMedia("(pointer: coarse)").matches;
+  const lowPower = reduce || (navigator.deviceMemory || 4) <= 2;
+  const lean = coarse || lowPower;
+  html.classList.toggle("is-lowpower", lowPower);
+  html.classList.toggle("is-lean", lean);
+
   /* the ink-dissolve is progressive enhancement: no WebGL, no drama */
   const Smoke = window.Smoke;
-  const canDissolve = Boolean(Smoke && Smoke.supported && !reduce);
+  const canDissolve = Boolean(Smoke && Smoke.supported && !reduce && !lowPower);
   const dissolveIn = (host, img, duration = 900) => {
     if (!canDissolve || !host || !img) return;
     if (!img.complete || !img.naturalWidth) {
@@ -371,7 +380,7 @@
 
     const vh = window.innerHeight;
     if (hero) hero.style.setProperty("--hp", String(clamp(y / Math.max(vh, 1))));
-    skewTarget = reduce ? 0 : clamp(dy * 0.55, -2.4, 2.4);
+    skewTarget = reduce || lean ? 0 : clamp(dy * 0.55, -2.4, 2.4);
 
     // hero parallax, with a little pointer drift on top
     if (!reduce) {
@@ -513,6 +522,16 @@
     requestAnimationFrame(motionLoop);
   };
   requestAnimationFrame(motionLoop);
+
+  /* ---------------- smoke drifts only while it is on screen ---------------- */
+  if ("IntersectionObserver" in window) {
+    const smokeIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle("is-live", entry.isIntersecting));
+    }, { rootMargin: "12% 0px" });
+    $$(".smoke").forEach((el) => smokeIO.observe(el));
+  } else {
+    $$(".smoke").forEach((el) => el.classList.add("is-live"));
+  }
 
   /* ---------------- current section in the menu ---------------- */
   const menuLinks = $$(".menu-item");

@@ -82,8 +82,8 @@ stage padded `.75rem`/`1.25rem` with a 1fr/1fr text-over-image split; apartment 
 | Residence slides | frame handover + progress-driven image drift (`--sp`) |
 | Apartment | 3 images + copy blocks on scroll, rolling counter column |
 | Nav | hairline + blur past the hero, hides on scroll-down |
-| Smoke overlays | two procedurally generated billow sheets per section, drifting on scroll + a slow 34 s CSS drift |
-| Ink dissolve | `assets/js/smoke.js`: raw WebGL, domain-warped fbm threshold peels one image into the next |
+| Smoke overlays | two procedurally generated billow sheets per section, drifting on scroll + a slow 34 s CSS drift, paused while off screen (one static sheet on low-memory phones) |
+| Ink dissolve | `assets/js/smoke.js`: raw WebGL, domain-warped fbm threshold peels one image into the next, at a capped buffer size on phones |
 | Hover language | line sweep on links, tile rotate/zoom, pill + dot expansion, kbd fill, footer arrow slide, magnetic CTA |
 | Cursor | lagging dot that expands into a labelled disc over anything marked `data-cursor` |
 | Menu | frosted veil behind the panel, and a dot on the section you are currently in |
@@ -112,6 +112,26 @@ and for the about card, slides, apartment rooms and the viewer opening. The engi
 hides the underlying `<img>` while it draws and restores it on completion, and it is
 entirely skipped when WebGL is unavailable or motion is reduced — the CSS cross-fades
 still do the job.
+
+### Performance tiers
+
+Two budgets are set on `<html>` at boot and the whole motion layer reads them:
+
+- **`is-lean`** — a coarse pointer, or a device reporting ≤2 GB. The dissolve still
+  runs, but its buffer is capped at 760 px on the long edge at 1× DPR and the shader
+  drops from 5 fbm octaves to 3. Scroll-velocity skew is switched off.
+- **`is-lowpower`** — `deviceMemory <= 2` (Chromium only; elsewhere it reads as 4, so
+  phones keep the dissolve). The dissolve is skipped entirely and the CSS cross-fades
+  take over, only the front smoke sheet is kept, its 34 s drift stops, and the layers
+  drop `will-change`.
+
+Drift also pauses while a section is off screen (`IntersectionObserver` → `.is-live`),
+and every dissolve canvas shrinks to 1×1 once it has faded, handing its drawing buffer
+and texture back to the GPU instead of holding them for the life of the page.
+
+Buffer sizes at 1440×900: hero canvas 1400×1015 (was 2160×1566), released to 1×1 after
+the dissolve. On a 390×844 phone: 303×760 (was 585×1266). The smoke sheets are
+generated at 1024×576 — 432 kB for four files, down from 532 kB at 1280×720.
 
 Everything degrades under `prefers-reduced-motion`, and all content is visible
 without JS (the loader is the only thing that depends on it).
@@ -148,7 +168,7 @@ that is already installed, so no browser download. `tools/gen-placeholders.mjs`
 still regenerates the original code-drawn SVG studies if you want to go back to them.
 
 ```bash
-node tools/gen-smoke.mjs          # regenerate the cloud/smoke sheets (532 kB, 4 files)
+node tools/gen-smoke.mjs          # regenerate the cloud/smoke sheets (432 kB, 4 files, 1024×576)
 ```
 
 ## 6. What is deliberately not copied
