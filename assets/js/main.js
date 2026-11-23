@@ -429,7 +429,7 @@
     // stage: marquee → structure
     if (stage) {
       const p = progressOf(stage);
-      const viewing = p > 0.46;
+      const viewing = p > 0.12;
       stage.classList.toggle("is-viewing", viewing);
       stageP = p;
       paintBelt();

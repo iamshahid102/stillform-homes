@@ -74,8 +74,12 @@
           <p>Explore</p>
         </div>
 
-        <div class="hero__bottom">
-          <p>A residence is more than its form.<br>It is how light moves through it.</p>
+        <div class="hero__hud">
+          <div class="hero__hud-rule"></div>
+          <div class="hero__hud-row">
+            <div class="hero__hud-brand"><span>STILL / FORM</span><span class="hero__hud-num">100</span></div>
+            <p class="hero__hud-note">A residence is more than its form.<br>It is how light moves through it.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -134,21 +138,24 @@
       <div class="stage__inner">
       <div class="stage__belt" aria-hidden="true">
         <div class="belt" data-belt>
-          <span>Still / Form</span><span>Still / Form</span><span>Still / Form</span><span>Still / Form</span>
-          <span>Still / Form</span><span>Still / Form</span><span>Still / Form</span><span>Still / Form</span>
+          <span>STILL / FORM</span><span>STILL / FORM</span><span>STILL / FORM</span><span>STILL / FORM</span>
+          <span>STILL / FORM</span><span>STILL / FORM</span><span>STILL / FORM</span><span>STILL / FORM</span>
         </div>
       </div>
 
-      <div class="stage__viewer" id="viewer" data-viewer data-cursor="Drag" tabindex="0" role="application" aria-label="Drag to rotate the elevation study">
-        <div class="frames" id="frames">
-          <img class="frame is-active" src="assets/img/frame-1.webp" alt="The house seen from the garden" draggable="false">
-          <img class="frame" src="assets/img/frame-2.webp" alt="Pool against a stone wall" draggable="false">
-          <img class="frame" src="assets/img/frame-3.webp" alt="Glazing reflected in still water" draggable="false">
-          <img class="frame" src="assets/img/frame-4.webp" alt="Pergola and planting along the garden facade" draggable="false">
-          <img class="frame" src="assets/img/frame-5.webp" alt="Facade illuminated after dark" draggable="false">
-          <img class="frame" src="assets/img/frame-6.webp" alt="Living volume in daylight" draggable="false">
-          <img class="frame" src="assets/img/frame-7.webp" alt="Bedroom in low evening light" draggable="false">
+      <div class="stage__canvas">
+        <div class="stage__viewer" id="viewer" data-viewer data-cursor="Drag" tabindex="0" role="application" aria-label="Drag to rotate the elevation study">
+          <div class="frames" id="frames">
+            <img class="frame is-active" src="assets/img/frame-1.webp" alt="The house seen from the garden" draggable="false">
+            <img class="frame" src="assets/img/frame-2.webp" alt="Pool against a stone wall" draggable="false">
+            <img class="frame" src="assets/img/frame-3.webp" alt="Glazing reflected in still water" draggable="false">
+            <img class="frame" src="assets/img/frame-4.webp" alt="Pergola and planting along the garden facade" draggable="false">
+            <img class="frame" src="assets/img/frame-5.webp" alt="Facade illuminated after dark" draggable="false">
+            <img class="frame" src="assets/img/frame-6.webp" alt="Living volume in daylight" draggable="false">
+            <img class="frame" src="assets/img/frame-7.webp" alt="Bedroom in low evening light" draggable="false">
+          </div>
         </div>
+        <span class="stage__prompt" aria-hidden="true">Scroll to enter</span>
       </div>
 
       <div class="stage__rail" data-rail>

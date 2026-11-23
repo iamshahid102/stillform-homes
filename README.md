@@ -88,6 +88,8 @@ stage padded `.75rem`/`1.25rem` with a 1fr/1fr text-over-image split; apartment 
 | Cursor | lagging dot that expands into a labelled disc over anything marked `data-cursor` |
 | Menu | frosted veil behind the panel, and a dot on the section you are currently in |
 | Hero exit | copy lifts and fades with `--hp`; the photograph drifts a few pixels with the pointer |
+| Hero index bar | a hairline rule, the wordmark with its `100` index and the centred tagline sit along the bottom edge, as on the reference |
+| Marquee to structure | the belt drifts across a 1020 svh section while a small centre window grows to fill the screen and hands over to the frame study |
 | Fog wipe | `--f` raises a full-viewport fog bank over the about cluster, holds it while the phase changes, then clears it onto the statement |
 | Cluster spread | `--cp` pushes the six about cards outward, tilts them further and shrinks the central frame across the cluster phase |
 | Photo swap | the six tiles cross-fade to a second set of photographs, staggered per card, under cover of the fog |
