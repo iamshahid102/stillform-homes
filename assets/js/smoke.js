@@ -15,7 +15,7 @@
     void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
   `;
 
-  const FRAG = `
+  const fragSource = (octaves) => `
     precision highp float;
     uniform sampler2D uTex;
     uniform vec2 uRes;
@@ -42,7 +42,7 @@
     float fbm(vec2 p) {
       float v = 0.0;
       float a = 0.5;
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < ${octaves}; i++) {
         v += a * vnoise(p);
         p *= 2.02;
         a *= 0.5;
@@ -76,6 +76,10 @@
       gl_FragColor = vec4(rgb, colour.a * alpha);
     }
   `;
+
+  /* phones render the dissolve at a fraction of the pixels — it is soft
+     noise, so a smaller buffer is invisible but much cheaper to fill */
+  const lean = () => document.documentElement.classList.contains("is-lean");
 
   const glFor = (canvas) => {
     const gl = canvas.getContext("webgl", {
@@ -117,7 +121,7 @@
     }
 
     const vs = compile(gl, gl.VERTEX_SHADER, VERT);
-    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
+    const fs = compile(gl, gl.FRAGMENT_SHADER, fragSource(lean() ? 3 : 5));
     if (!vs || !fs) {
       canvas.classList.add("is-dead");
       return null;
@@ -167,9 +171,15 @@
 
   const resize = (entry) => {
     const { canvas, gl, uniforms } = entry;
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
-    const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+    const light = lean();
+    const dpr = light ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
+    const cap = light ? 760 : 1400;
+
+    let w = Math.max(1, canvas.clientWidth * dpr);
+    let h = Math.max(1, canvas.clientHeight * dpr);
+    const k = Math.min(1, cap / Math.max(w, h));
+    w = Math.max(1, Math.round(w * k));
+    h = Math.max(1, Math.round(h * k));
     if (canvas.width === w && canvas.height === h && entry.sizing) return;
     canvas.width = w;
     canvas.height = h;
@@ -195,6 +205,8 @@
    */
   const dissolve = (host, img, options = {}) => {
     if (!host || !img || !supported) return Promise.resolve(false);
+    // hidden on this breakpoint (e.g. the gallery card on phones) — nothing to draw
+    if (host.clientWidth < 4 || host.clientHeight < 4) return Promise.resolve(false);
 
     const previous = state.get(host);
     if (previous && previous.cancel) previous.cancel();
@@ -209,6 +221,8 @@
     const tint = options.tint ?? [0.95, 0.92, 0.86];
 
     entry.sizing = false;
+    entry.gen = (entry.gen || 0) + 1;
+    const gen = entry.gen;
     canvas.style.opacity = "1";
     resize(entry);
 
@@ -235,6 +249,13 @@
         img.style.visibility = wasHidden;
         canvas.style.opacity = "0";
         entry.cancel = null;
+        // release the drawing buffer and texture memory once the canvas is hidden
+        setTimeout(() => {
+          if (entry.gen !== gen || entry.cancel) return;
+          canvas.width = 1;
+          canvas.height = 1;
+          entry.sizing = false;
+        }, 700);
         resolve(ok);
       };
 
