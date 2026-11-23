@@ -95,6 +95,51 @@
   }
 
   /* ---------------- statement word split ---------------- */
+  /* ---------------- cursor + pointer state ---------------- */
+  const cursorEl = $("#cursor");
+  const cursorLabel = cursorEl ? $(".cursor__label", cursorEl) : null;
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const pointer = { x: 0, y: 0, cx: 0, cy: 0 };
+  let cursorOn = false;
+  let cursorX = window.innerWidth / 2;
+  let cursorY = window.innerHeight / 2;
+
+  const cursorTick = () => {
+    if (!cursorEl || !finePointer || reduce) return;
+    cursorX += (pointer.cx - cursorX) * 0.24;
+    cursorY += (pointer.cy - cursorY) * 0.24;
+    cursorEl.style.transform = `translate3d(${cursorX.toFixed(2)}px, ${cursorY.toFixed(2)}px, 0)`;
+  };
+
+  if (cursorEl && finePointer && !reduce) {
+    window.addEventListener(
+      "pointermove",
+      (e) => {
+        pointer.cx = e.clientX;
+        pointer.cy = e.clientY;
+        pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+        pointer.y = (e.clientY / window.innerHeight) * 2 - 1;
+        if (!cursorOn) {
+          cursorOn = true;
+          cursorX = e.clientX;
+          cursorY = e.clientY;
+          cursorEl.classList.add("is-on");
+        }
+        const hit = e.target.closest("[data-cursor]");
+        const label = hit ? hit.getAttribute("data-cursor") : "";
+        cursorEl.classList.toggle("is-hover", Boolean(label));
+        if (cursorLabel && cursorLabel.textContent !== label) cursorLabel.textContent = label;
+      },
+      { passive: true },
+    );
+
+    document.addEventListener("pointerleave", () => {
+      cursorOn = false;
+      cursorEl.classList.remove("is-on");
+    });
+  }
+
+  /* ---------------- statement word split ---------------- */
   const statement = $("[data-words]");
   if (statement) {
     const nodes = Array.from(statement.childNodes);
@@ -297,10 +342,26 @@
 
   let lastY = 0;
   let ticking = false;
+  let stageP = 0;
+  let autoPct = 0;
+  let skewTarget = 0;
+  let skewNow = 0;
+
+  const staggerLines = (scope, step = 0.06) => {
+    if (!scope) return;
+    $$(".mask > .line", scope).forEach((line, i) => {
+      line.style.setProperty("--d", `${i * step}s`);
+    });
+  };
+
+  const paintBelt = () => {
+    if (belt) belt.style.transform = `translate3d(${-(stageP * 42) - autoPct}%, 0, 0)`;
+  };
 
   const paint = () => {
     ticking = false;
     const y = window.scrollY;
+    const dy = y - lastY;
     if (nav) {
       if (y > lastY && y > 260 && !nav.classList.contains("is-open")) nav.classList.add("is-hidden");
       else nav.classList.remove("is-hidden");
@@ -309,12 +370,17 @@
     onNav();
 
     const vh = window.innerHeight;
+    if (hero) hero.style.setProperty("--hp", String(clamp(y / Math.max(vh, 1))));
+    skewTarget = reduce ? 0 : clamp(dy * 0.55, -2.4, 2.4);
 
-    // hero parallax
+    // hero parallax, with a little pointer drift on top
     if (!reduce) {
+      const heroMedia = $(".hero__media");
       parallaxEls.forEach((el) => {
         const amount = parseFloat(el.dataset.parallax || "0.12");
-        el.style.transform = `translate3d(0, ${clamp(y, 0, vh * 1.4) * amount}px, 0)`;
+        const px = el === heroMedia ? pointer.x * 9 : 0;
+        const py = el === heroMedia ? pointer.y * 6 : 0;
+        el.style.transform = `translate3d(${px}px, ${clamp(y, 0, vh * 1.4) * amount + py}px, 0)`;
       });
     }
 
@@ -335,7 +401,8 @@
       const p = progressOf(stage);
       const viewing = p > 0.46;
       stage.classList.toggle("is-viewing", viewing);
-      if (belt) belt.style.transform = `translate3d(${-p * 42}%, 0, 0)`;
+      stageP = p;
+      paintBelt();
       if (viewing && !viewerShown) {
         viewerShown = true;
         setTimeout(() => dissolveIn(frames[current] && frames[current].parentNode, frames[current], 1300), 260);
@@ -350,6 +417,10 @@
       slideEls.forEach((s, i) => s.classList.toggle("is-active", i === idx));
       if (idx !== lastSlide) {
         lastSlide = idx;
+        slideEls.forEach((s, i) => {
+          if (i !== idx) $$(".mask > .line", s).forEach((l) => l.style.setProperty("--d", "0s"));
+        });
+        staggerLines(slideEls[idx]);
         const media = slideEls[idx] && $(".slide__media", slideEls[idx]);
         if (media) dissolveIn(media, $("img", media), 950);
       }
@@ -382,6 +453,7 @@
       if (idx !== lastApt) {
         const changed = idx > lastApt;
         lastApt = idx;
+        if (idx >= 0) staggerLines(aptTexts[idx], 0.05);
         if (changed && idx > 0) {
           const host = $(".apt__images");
           const img = aptImgs[idx] && $("img", aptImgs[idx]);
@@ -404,6 +476,60 @@
   window.addEventListener("resize", requestPaint);
   requestPaint();
   setTimeout(requestPaint, 60);
+
+  if (slideEls[0]) staggerLines(slideEls[0]);
+
+  /* ---------------- continuous motion ---------------- */
+  const rootEl = document.documentElement;
+  let stageVisible = false;
+  let lastSkew = null;
+  let lastT = 0;
+
+  if (stage && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => { stageVisible = entry.isIntersecting; }).observe(stage);
+  }
+
+  const motionLoop = (now) => {
+    const dt = Math.min(64, now - (lastT || now));
+    lastT = now;
+
+    cursorTick();
+
+    // scroll-velocity skew: kicks on movement, settles back to flat
+    skewNow += (skewTarget - skewNow) * 0.14;
+    skewTarget *= Math.pow(0.88, dt / 16.67);
+    if (Math.abs(skewNow) < 0.02) skewNow = 0;
+    if (skewNow !== lastSkew) {
+      rootEl.style.setProperty("--skew", `${skewNow.toFixed(3)}deg`);
+      lastSkew = skewNow;
+    }
+
+    // the marquee belt never stands still, and speeds up with the scroll
+    if (stageVisible && !reduce) {
+      autoPct = (autoPct + dt * 0.0016 * (1 + Math.min(Math.abs(skewNow) * 0.9, 2.2))) % 12.5;
+      paintBelt();
+    }
+
+    requestAnimationFrame(motionLoop);
+  };
+  requestAnimationFrame(motionLoop);
+
+  /* ---------------- current section in the menu ---------------- */
+  const menuLinks = $$(".menu-item");
+  if (menuLinks.length && "IntersectionObserver" in window) {
+    const pairs = menuLinks
+      .map((a) => ({ a, el: $(a.getAttribute("href")) }))
+      .filter((o) => o.el);
+
+    const navIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        pairs.forEach((o) => o.a.classList.toggle("is-current", o.el === entry.target));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+    pairs.forEach((o) => navIO.observe(o.el));
+  }
 
   /* ---------------- magnetic call-to-action ---------------- */
   if (!reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {

@@ -85,6 +85,14 @@ stage padded `.75rem`/`1.25rem` with a 1fr/1fr text-over-image split; apartment 
 | Smoke overlays | two procedurally generated billow sheets per section, drifting on scroll + a slow 34 s CSS drift |
 | Ink dissolve | `assets/js/smoke.js`: raw WebGL, domain-warped fbm threshold peels one image into the next |
 | Hover language | line sweep on links, tile rotate/zoom, pill + dot expansion, kbd fill, footer arrow slide, magnetic CTA |
+| Cursor | lagging dot that expands into a labelled disc over anything marked `data-cursor` |
+| Menu | frosted veil behind the panel, and a dot on the section you are currently in |
+| Hero exit | copy lifts and fades with `--hp`; the photograph drifts a few pixels with the pointer |
+| Marquee | the belt never stands still — it auto-advances and speeds up with the scroll |
+| Scroll velocity | `--skew` on tiles and slide photographs, easing back to flat when you stop |
+| Line staggers | slide headings and apartment copy release line by line on change |
+| Footer | columns rise in, then the serif sign-off splits per character |
+| Frame settle | the active elevation frame eases from `scale(1.075)` to `1.02` on every change |
 | Ambient | hero settles from `scale(1.06)`, tour photograph slow ken-burns |
 
 ### The smoke

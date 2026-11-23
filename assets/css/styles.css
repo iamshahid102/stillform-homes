@@ -129,6 +129,7 @@ section[id], footer[id] { scroll-margin-top: 4.5rem; }
   transform: translateY(110%); transition: transform .55s var(--ease) var(--d, 0s), opacity .3s;
 }
 .menu-item:hover { opacity: .55; }
+.nav.is-open { color: var(--ink); }
 .nav.is-open .nav__panel { max-height: 12rem; }
 .nav.is-open .menu-item { transform: none; }
 
@@ -141,7 +142,12 @@ section[id], footer[id] { scroll-margin-top: 4.5rem; }
 .hero__media { position: absolute; inset: -8% 0; will-change: transform; }
 .hero__media img { width: 100%; height: 100%; object-fit: cover; }
 .hero__veil { position: absolute; inset: 0; background: rgba(0, 0, 0, .35); }
-.hero__content { position: absolute; inset: 0; z-index: 10; }
+.hero__content {
+  position: absolute; inset: 0; z-index: 10;
+  transform: translate3d(0, calc(var(--hp, 0) * -5svh), 0);
+  opacity: max(0, calc(1 - var(--hp, 0) * 1.35));
+  will-change: transform, opacity;
+}
 
 .hero__head { position: absolute; left: var(--px); top: 16%; }
 .hero__title {
@@ -232,7 +238,7 @@ section[id], footer[id] { scroll-margin-top: 4.5rem; }
 [data-tile="3"] { right: 24%; top: 2%; --rot: 5deg; width: clamp(6rem, 13vw, 12rem); }
 [data-tile="4"] { right: -5%; top: 16%; --rot: -7deg; }
 [data-tile="5"] { right: 1%; bottom: -4%; --rot: 3deg; }
-.about.is-in .tile { opacity: 1; transform: rotate(var(--rot, 0deg)); }
+.about.is-in .tile { opacity: 1; transform: rotate(var(--rot, 0deg)) skewY(var(--skew, 0deg)); }
 .about.is-in [data-tile="0"] { transition-delay: .1s; }
 .about.is-in [data-tile="1"] { transition-delay: .18s; }
 .about.is-in [data-tile="2"] { transition-delay: .26s; }
@@ -271,10 +277,11 @@ section[id], footer[id] { scroll-margin-top: 4.5rem; }
 .about__text {
   position: relative; z-index: 4;
   width: 100%; padding-inline: var(--px);
-  opacity: 0;
+  opacity: 0; pointer-events: none;
   transition: opacity .9s var(--ease);
 }
-.about.is-reading .about__text { opacity: 1; }
+.about.is-reading .about__text { opacity: 1; pointer-events: auto; }
+.about__kicker { pointer-events: none; }
 .about.is-reading .about__tiles,
 .about.is-reading .about__card,
 .about.is-reading .about__kicker { opacity: 0; pointer-events: none; }
@@ -831,15 +838,68 @@ kbd { transition: background-color .35s var(--ease), color .35s var(--ease), bor
 .foot__cols a:hover { padding-left: .9rem; opacity: 1; }
 .foot__cols a:hover::before { opacity: .7; transform: none; }
 
+/* ---------- cursor ---------- */
+.cursor {
+  position: fixed; left: 0; top: 0; z-index: 140;
+  display: grid; place-items: center;
+  width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 999px;
+  background: var(--ink); box-shadow: 0 0 0 1px rgba(237, 230, 214, .3);
+  pointer-events: none; opacity: 0;
+  transform: translate3d(-120px, -120px, 0);
+  transition: opacity .3s var(--ease), width .45s var(--ease), height .45s var(--ease),
+              margin .45s var(--ease), background-color .4s var(--ease), box-shadow .4s;
+  will-change: transform;
+}
+.cursor.is-on { opacity: .95; }
+.cursor.is-hover {
+  width: 76px; height: 76px; margin: -38px 0 0 -38px;
+  background: rgba(237, 230, 214, .94);
+  box-shadow: 0 0 0 1px rgba(42, 39, 37, .16);
+}
+.cursor__label {
+  font-family: var(--sans); font-size: 9px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink); white-space: nowrap;
+  opacity: 0; transform: translateY(3px);
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.cursor.is-hover .cursor__label { opacity: 1; transform: none; }
+
+/* ---------- menu veil + current section ---------- */
+.nav__veil {
+  position: fixed; inset: 0; z-index: 55; pointer-events: none;
+  background: rgba(237, 230, 214, .74);
+  backdrop-filter: blur(14px) saturate(.9); -webkit-backdrop-filter: blur(14px) saturate(.9);
+  opacity: 0; transition: opacity .5s var(--ease);
+}
+.nav.is-open + .nav__veil { opacity: 1; }
+.menu-item { position: relative; }
+.menu-item::before {
+  content: ""; position: absolute; right: calc(100% + .6rem); top: 50%;
+  width: 4px; height: 4px; margin-top: -2px; border-radius: 50%;
+  background: currentColor; opacity: 0; transform: scale(.4);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.menu-item.is-current::before { opacity: .55; transform: none; }
+
 /* ---------- ambient motion ---------- */
 .hero__media img { transform: scale(1.06); transition: transform 2.6s var(--ease); }
 body.is-ready .hero__media img { transform: none; }
 
 .slide__media img {
   position: absolute; inset: -6% 0 auto; height: 112%; width: 100%; object-fit: cover;
-  transform: translate3d(0, calc(var(--sp, 0) * -6%), 0) scale(1.04);
+  transform: translate3d(0, calc(var(--sp, 0) * -6%), 0) scale(1.04) skewY(var(--skew, 0deg));
   will-change: transform;
 }
+
+.frame.is-active { animation: frame-settle 7s var(--ease) both; }
+@keyframes frame-settle {
+  0%   { transform: scale(1.075); }
+  100% { transform: scale(1.02); }
+}
+
+.foot__cols > div { opacity: 0; transform: translateY(18px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.foot.is-in .foot__cols > div { opacity: 1; transform: none; }
+.foot.is-in .foot__cols > div:nth-child(2) { transition-delay: .12s; }
 
 .tour__bg { animation: ken 30s ease-in-out infinite alternate; }
 @keyframes ken {
@@ -854,6 +914,10 @@ body.is-ready .hero__media img { transform: none; }
   100% { opacity: 1; transform: none; }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .cursor { display: none; }
+}
+
 @media (max-width: 1023px) {
   /* the panel copy sits over the brightest part of these photographs */
   .apt__stage::before {
@@ -865,7 +929,7 @@ body.is-ready .hero__media img { transform: none; }
 @media (min-width: 1024px) {
   .about__tiles { pointer-events: auto; }
   .tile:hover {
-    transform: rotate(calc(var(--rot, 0deg) * .3)) scale(1.05);
+    transform: rotate(calc(var(--rot, 0deg) * .3)) scale(1.05) skewY(var(--skew, 0deg));
     box-shadow: 0 34px 74px -44px rgba(42, 39, 37, .7);
     z-index: 2;
   }
@@ -974,4 +1038,7 @@ body.is-ready .hero__media img { transform: none; }
   .ch > span, .slide__media img, .hero__media img { transform: none !important; opacity: 1 !important; }
   .smoke__layer { opacity: 0 !important; }
   .smoke-canvas { display: none !important; }
+  .cursor { display: none !important; }
+  .foot__cols > div { opacity: 1 !important; transform: none !important; }
+  .hero__content { opacity: 1 !important; transform: none !important; }
 }

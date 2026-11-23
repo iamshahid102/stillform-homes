@@ -42,6 +42,9 @@
       </div>
     </div>
   </nav>
+  <div class="nav__veil" aria-hidden="true"></div>
+
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
   <main>
 
@@ -87,7 +90,7 @@
 
         <p class="about__kicker" data-kicker>A quieter way to live</p>
 
-        <div class="about__tiles" aria-hidden="true">
+        <div class="about__tiles" data-cursor="View" aria-hidden="true">
           <div class="tile tile--l" data-tile="0"><img src="assets/img/living-room.webp" alt=""></div>
           <div class="tile tile--l" data-tile="1"><img src="assets/img/detail.webp" alt=""></div>
           <div class="tile tile--l" data-tile="2"><img src="assets/img/kitchen.webp" alt=""></div>
@@ -96,7 +99,7 @@
           <div class="tile tile--r" data-tile="5"><img src="assets/img/residence-hero.webp" alt=""></div>
         </div>
 
-        <div class="about__card" data-gallery>
+        <div class="about__card" data-gallery data-cursor="View">
           <div class="card__frames" id="cardFrames">
             <img class="is-active" src="assets/img/patio-front.webp" alt="Terrace and pool at the front of the house">
             <img src="assets/img/landscape-house.webp" alt="House set into the landscape">
@@ -131,7 +134,7 @@
         </div>
       </div>
 
-      <div class="stage__viewer" id="viewer" data-viewer tabindex="0" role="application" aria-label="Drag to rotate the elevation study">
+      <div class="stage__viewer" id="viewer" data-viewer data-cursor="Drag" tabindex="0" role="application" aria-label="Drag to rotate the elevation study">
         <div class="frames" id="frames">
           <img class="frame is-active" src="assets/img/frame-1.webp" alt="The house seen from the garden" draggable="false">
           <img class="frame" src="assets/img/frame-2.webp" alt="Pool against a stone wall" draggable="false">
@@ -316,7 +319,7 @@
         <div class="foot__rule"></div>
         <div class="foot__body">
           <div>
-            <h2>Space, held<br>in light.</h2>
+            <h2 data-chars>Space, held<br>in light.</h2>
             <p>Houses shaped by proportion, daylight and honest material.</p>
           </div>
           <div class="foot__cols">
