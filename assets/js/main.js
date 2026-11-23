@@ -313,6 +313,7 @@
 
   /* ---------------- about gallery ---------------- */
   const cardFrames = $$(".card__frames img");
+  let stepCard = null;
   if (cardFrames.length) {
     let gi = 0;
     const paintCard = (i) => {
@@ -324,6 +325,7 @@
     const next = $("[data-next]");
     if (prev) prev.addEventListener("click", () => paintCard(gi - 1));
     if (next) next.addEventListener("click", () => paintCard(gi + 1));
+    stepCard = () => paintCard(gi + 1);
   }
 
   /* ---------------- scroll engine ---------------- */
@@ -409,7 +411,12 @@
         fog.style.setProperty("--f", (enter * (1 - exit)).toFixed(3));
         fog.classList.toggle("is-live", enter > 0.01);
       }
-      about.classList.toggle("is-swapped", ap > threshold * 0.86);
+      // the central frame turns over with the tiles, while the fog hides it
+      const swapped = ap > threshold * 0.86;
+      if (swapped !== about.classList.contains("is-swapped")) {
+        about.classList.toggle("is-swapped", swapped);
+        if (swapped && stepCard) stepCard();
+      }
       about.style.setProperty("--cp", String(clamp(ap / Math.max(threshold, 0.02))));
 
       if (!reduce) {
