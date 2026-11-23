@@ -537,6 +537,13 @@
   };
   requestAnimationFrame(motionLoop);
 
+  /* ---------------- the cluster breathes only while it is on screen ---------------- */
+  if (about && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      about.classList.toggle("is-live", entry.isIntersecting);
+    }, { rootMargin: "0px" }).observe(about);
+  }
+
   /* ---------------- smoke drifts only while it is on screen ---------------- */
   if ("IntersectionObserver" in window) {
     const smokeIO = new IntersectionObserver((entries) => {
