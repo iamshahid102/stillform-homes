@@ -381,6 +381,13 @@ section[id], footer[id] { scroll-margin-top: 4.5rem; }
 .about__label { grid-column: span 12; }
 .about__label span { font-size: 10px; text-transform: uppercase; letter-spacing: .18em; }
 .about__body { grid-column: span 12; }
+@media (min-width: 1024px) {
+  .about__label { grid-column: span 2; }
+  .about__body { grid-column: span 10; }
+  /* the reference sets the statement in viewport units once there is room */
+  .about__statement { font-size: 5.2vw; line-height: .8; }
+  .slide__text h2 { font-size: 4.4vw; }
+}
 
 .about__statement {
   font-family: var(--sans); font-weight: 400;
